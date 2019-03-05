@@ -1,0 +1,51 @@
+<main>
+ <table>
+   <h1>Books</h1>
+    
+      <thead>
+        <tr>
+          <th> Title </th>
+          <th> Body </th>
+          <th></th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @blog.each do |blog| %>
+        <tr>
+              <td>
+                <%=  blog.title %>
+              </td>
+              <td>
+                <%= blog.body %>
+              </td>
+              <td>
+            <%= link_to "Show", blog_path(blog.id) %>
+            <%= link_to "Edit", edit_blog_path(blog.id) %>
+            <%= link_to "Destroy", blog_path(blog.id),method: :delete ,"data-confirm"=>"削除してもよろしいですか？"  %>
+            </td>
+        </tr>
+        <% end %>
+        </tbody>
+      
+
+  </table>
+  
+  <h1>New book</h1>
+  
+
+<%= form_for(@newblog) do |f| %>
+
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+    
+     <h4>Body</h4>
+    <%= f.text_field :body %>
+    <br>
+    <%= f.submit "Create Book" %>
+    </br>
+
+    
+<% end %>
+ 
+</main>
